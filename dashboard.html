@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard - Portal Institution</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    /* General Styles */
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #f0f2f5;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      min-height: 100vh;
+    }
+
+    /* Sidebar */
+    .sidebar {
+      width: 260px;
+      background-color: #222;
+      color: white;
+      padding-top: 20px;
+      position: fixed;
+      height: 100%;
+      box-shadow: 4px 0 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .sidebar-header {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .sidebar-header h2 {
+      font-size: 22px;
+      margin: 0;
+    }
+
+    .sidebar-nav {
+      list-style: none;
+      padding-left: 0;
+      margin: 0;
+    }
+
+    .sidebar-nav li a {
+      display: flex;
+      align-items: center;
+      padding: 15px 20px;
+      color: white;
+      text-decoration: none;
+      font-size: 18px;
+      border-radius: 5px;
+      transition: 0.3s;
+    }
+
+    .sidebar-nav li a:hover,
+    .sidebar-nav li a.active {
+      background-color: #4CAF50;
+    }
+
+    .sidebar-nav li a i {
+      margin-right: 15px;
+    }
+
+    /* Main Content */
+    .main-content {
+      margin-left: 260px;
+      padding: 20px;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    /* Navbar */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: white;
+      padding: 15px 20px;
+      border-radius: 10px;
+      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+      margin-bottom: 20px;
+    }
+
+    .search-bar input {
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      width: 250px;
+    }
+
+    .user-menu {
+      display: flex;
+      align-items: center;
+    }
+
+    .user-menu i {
+      font-size: 22px;
+      cursor: pointer;
+      margin-right: 20px;
+      transition: 0.3s;
+    }
+
+    .user-menu i:hover {
+      color: #4CAF50;
+    }
+
+    /* Overview Cards */
+    .content-body {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: space-between;
+    }
+
+    .overview-card {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      width: 78%;
+      transition: 0.3s;
+      cursor: pointer;
+    }
+
+    .overview-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .card-icon {
+      font-size: 40px;
+      color: #4CAF50;
+      margin-bottom: 15px;
+    }
+
+    /* Quick Actions */
+    .quick-actions {
+      margin-top: 30px;
+      display: flex;
+      justify-content: space-between;
+      gap: 15px;
+    }
+
+    .action-btn {
+      background: #4CAF50;
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      font-size: 16px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .action-btn:hover {
+      background: #388E3C;
+    }
+
+    /* Activity Feed */
+    .activity-feed {
+      margin-top: 30px;
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .activity-item {
+      display: flex;
+      align-items: center;
+      margin-bottom: 15px;
+    }
+
+    .activity-item i {
+      font-size: 22px;
+      color: #4CAF50;
+      margin-right: 10px;
+    }
+
+    @media (max-width: 768px) {
+      .sidebar {
+        width: 220px;
+      }
+      .main-content {
+        margin-left: 220px;
+      }
+      .overview-card {
+        width: 100%;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .sidebar {
+        width: 100%;
+        position: relative;
+      }
+      .main-content {
+        margin-left: 0;
+      }
+      .content-body {
+        flex-direction: column;
+        align-items: center;
+      }
+      .overview-card {
+        width: 90%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <div class="sidebar-header">
+      <h3>Morphat Technical Institution</h3>
+    </div>
+    <ul class="sidebar-nav">
+      <li><a href="#" class="active"><i class="fa fa-tachometer-alt"></i> Dashboard</a></li>
+      <li><a href="profile.html"><i class="fa fa-user"></i> Profile</a></li>
+      <li><a href="general settings.html"><i class="fa fa-cogs"></i> General Setings</a></li>
+      <li><a href="logout.html"><i class="fa fa-sign-out-alt"></i> Logout</a></li>
+    </ul>
+  </div>
+
+  <!-- Main Content -->
+  <div class="main-content">
+    <!-- Navbar -->
+    <div class="navbar">
+      <div class="search-bar">
+        <input type="text" placeholder="Search...">
+      </div>
+      <div class="user-menu">
+        <i class="fa fa-bell"></i>
+        <i class="fa fa-user-circle"></i>
+      </div>
+    </div>
+
+    <!-- Overview Cards -->
+    <div class="content-body">
+      <a href="event.html" style="text-decoration: none; color: inherit;">
+        <div class="overview-card">
+          <div class="card-icon"><i class="fa fa-calendar"></i></div>
+          <h3>Events</h3>
+        </div>
+      </a>
+      <a href="messages.html" style="text-decoration: none; color: inherit;">
+        <div class="overview-card">
+          <div class="card-icon"><i class="fa fa-comment"></i></div>
+          <h3>Messages</h3>
+        </div>
+      </a>
+      <a href="analytics.html" style="text-decoration: none; color: inherit;">
+        <div class="overview-card">
+          <div class="card-icon"><i class="fa fa-chart-line"></i></div>
+          <h3>Analytics</h3>
+        </div>
+      </a>
+      <a href="finances.html" style="text-decoration: none; color: inherit;">
+        <div class="overview-card">
+          <div class="card-icon"><i class="fa fa-dollar-sign"></i></div>
+          <h3>Finances</h3>
+        </div>
+      </a>
+      <a href="fee structure.html" style="text-decoration: none; color: inherit;">
+        <div class="overview-card">
+          <div class="card-icon"><i class="fa fa-file-invoice"></i></div>
+          <h3>Fee Structure</h3>
+        </div>
+      </a>
+      <a href="Register unites.html" style="text-decoration: none; color: inherit;">
+        <div class="overview-card">
+          <div class="card-icon"><i class="fa fa-edit"></i></div>
+          <h3>Register Unit</h3>
+        </div>
+      </a>
+      <!-- Added new cards -->
+      <a href="exams.html" style="text-decoration: none; color: inherit;">
+        <div class="overview-card">
+          <div class="card-icon"><i class="fa fa-pen"></i></div>
+          <h3>Exams</h3>
+        </div>
+      </a>
+      <a href="report online.html" style="text-decoration: none; color: inherit;">
+        <div class="overview-card">
+          <div class="card-icon"><i class="fa fa-file-alt"></i></div>
+          <h3>Online Reporting</h3>
+        </div>
+      </a>
+    </div>
+
+    <!-- Quick Actions -->
+    <div class="quick-actions">
+      <a href="add-user.html"><button class="action-btn">Add User</button></a>
+      <a href="generate report.html"><button class="action-btn">Generate Report</button></a>
+      <a href="general settings.html"><button class="action-btn">Settings</button></a>
+    </div>
+
+    <!-- Activity Feed -->
+    <div class="activity-feed">
+      <h3>Recent Activity</h3>
+      <div class="activity-item"><i class="fa fa-user"></i> Steve updated profile</div>
+      <div class="activity-item"><i class="fa fa-upload"></i> New event added</div>
+      <div class="activity-item"><i class="fa fa-comment"></i> Message from John</div>
+    </div>
+  </div>
+</body>
+</html>

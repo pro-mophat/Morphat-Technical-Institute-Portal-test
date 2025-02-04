@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Portal - Messages & Assignments</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        /* Dashboard Styling */
+        .dashboard {
+            width: 100%;
+            max-width: 600px;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+
+        /* Message Section */
+        .message-card {
+            background: #fff;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+            margin-bottom: 15px;
+        }
+
+        .message-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .message-content {
+            color: #555;
+            margin-bottom: 15px;
+        }
+
+        .message-actions {
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+        }
+
+        .reply-btn, .delete-btn {
+            padding: 8px 12px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .reply-btn {
+            background-color: #007bff;
+            color: white;
+        }
+
+        .delete-btn {
+            background-color: #dc3545;
+            color: white;
+        }
+
+        /* Reply Form */
+        .reply-form {
+            display: none;
+            margin-top: 10px;
+        }
+
+        .reply-form textarea {
+            width: 100%;
+            padding: 8px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            resize: none;
+        }
+
+        .reply-form button {
+            margin-top: 5px;
+            background-color: #28a745;
+            color: white;
+            padding: 8px 12px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        /* Assignment Submission */
+        .assignment-section {
+            margin-top: 20px;
+            padding: 15px;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .assignment-section input,
+        .assignment-section button {
+            width: 100%;
+            padding: 8px;
+            margin-top: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        .assignment-section button {
+            background-color: #007bff;
+            color: white;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="dashboard">
+        <h2>Student Portal - Messages & Assignments</h2>
+
+        <!-- Messages -->
+        <div class="message-card">
+            <div class="message-header">
+                <h3>John Doe</h3>
+                <span>Feb 4, 2025 - 10:30 AM</span>
+            </div>
+            <p class="message-content">
+                Hello, your assignment is due this Friday. Please make sure to submit it on time.
+            </p>
+            <div class="message-actions">
+                <button class="reply-btn" onclick="showReplyForm(this)">Reply</button>
+                <button class="delete-btn" onclick="deleteMessage(this)">Delete</button>
+            </div>
+            <div class="reply-form">
+                <textarea placeholder="Write your reply..."></textarea>
+                <button onclick="sendReply(this)">Send Reply</button>
+            </div>
+        </div>
+
+        <div class="message-card">
+            <div class="message-header">
+                <h3>Professor Smith</h3>
+                <span>Feb 3, 2025 - 5:45 PM</span>
+            </div>
+            <p class="message-content">
+                Please review chapter 5 before next class. Let me know if you have any questions.
+            </p>
+            <div class="message-actions">
+                <button class="reply-btn" onclick="showReplyForm(this)">Reply</button>
+                <button class="delete-btn" onclick="deleteMessage(this)">Delete</button>
+            </div>
+            <div class="reply-form">
+                <textarea placeholder="Write your reply..."></textarea>
+                <button onclick="sendReply(this)">Send Reply</button>
+            </div>
+        </div>
+
+        <!-- Assignment Submission -->
+        <div class="assignment-section">
+            <h3>Submit Your Assignment</h3>
+            <input type="file" id="assignmentFile">
+            <button onclick="submitAssignment()">Submit Assignment</button>
+        </div>
+
+    </div>
+
+    <script>
+        function showReplyForm(button) {
+            let messageCard = button.closest('.message-card');
+            let replyForm = messageCard.querySelector('.reply-form');
+            replyForm.style.display = replyForm.style.display === "block" ? "none" : "block";
+        }
+
+        function sendReply(button) {
+            let messageCard = button.closest('.message-card');
+            let replyText = messageCard.querySelector('textarea').value;
+
+            if (replyText.trim() === "") {
+                alert("Reply cannot be empty.");
+                return;
+            }
+
+            alert("Reply sent: " + replyText);
+            messageCard.querySelector('textarea').value = "";
+            messageCard.querySelector('.reply-form').style.display = "none";
+        }
+
+        function deleteMessage(button) {
+            let messageCard = button.closest('.message-card');
+            messageCard.remove();
+        }
+
+        function submitAssignment() {
+            let fileInput = document.getElementById("assignmentFile");
+            if (fileInput.files.length === 0) {
+                alert("Please select a file to upload.");
+                return;
+            }
+            alert("Assignment submitted successfully: " + fileInput.files[0].name);
+            fileInput.value = "";
+        }
+    </script>
+
+</body>
+</html>

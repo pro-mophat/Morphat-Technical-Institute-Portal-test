@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register for Exam - Portal Institution</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    /* General Styles */
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #f0f2f5;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      min-height: 100vh;
+    }
+
+    /* Sidebar */
+    .sidebar {
+      width: 260px;
+      background-color: #222;
+      color: white;
+      padding-top: 20px;
+      position: fixed;
+      height: 100%;
+      box-shadow: 4px 0 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .sidebar-header {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .sidebar-header h2 {
+      font-size: 22px;
+      margin: 0;
+    }
+
+    .sidebar-nav {
+      list-style: none;
+      padding-left: 0;
+      margin: 0;
+    }
+
+    .sidebar-nav li a {
+      display: flex;
+      align-items: center;
+      padding: 15px 20px;
+      color: white;
+      text-decoration: none;
+      font-size: 18px;
+      border-radius: 5px;
+      transition: 0.3s;
+    }
+
+    .sidebar-nav li a:hover,
+    .sidebar-nav li a.active {
+      background-color: #4CAF50;
+    }
+
+    .sidebar-nav li a i {
+      margin-right: 15px;
+    }
+
+    /* Main Content */
+    .main-content {
+      margin-left: 260px;
+      padding: 20px;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    /* Navbar */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: white;
+      padding: 15px 20px;
+      border-radius: 10px;
+      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+      margin-bottom: 20px;
+    }
+
+    .search-bar input {
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      width: 250px;
+    }
+
+    .user-menu {
+      display: flex;
+      align-items: center;
+    }
+
+    .user-menu i {
+      font-size: 22px;
+      cursor: pointer;
+      margin-right: 20px;
+      transition: 0.3s;
+    }
+
+    .user-menu i:hover {
+      color: #4CAF50;
+    }
+
+    /* Exam Registration Form */
+    .registration-form {
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+      width: 100%;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .registration-form h3 {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 16px;
+      margin-bottom: 5px;
+    }
+
+    .form-group input, .form-group select {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 14px;
+    }
+
+    .form-group button {
+      width: 100%;
+      padding: 12px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: 0.3s;
+    }
+
+    .form-group button:hover {
+      background-color: #388E3C;
+    }
+
+    /* Available Exams List */
+    .exam-list {
+      margin-top: 30px;
+    }
+
+    .exam-item {
+      background: #f9f9f9;
+      padding: 15px;
+      margin-bottom: 10px;
+      border-radius: 5px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .exam-item h4 {
+      margin: 0;
+    }
+  </style>
+</head>
+<body>
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <div class="sidebar-header">
+      <h3>Morphat Technical Institution</h3>
+    </div>
+    <ul class="sidebar-nav">
+      <li><a href="dashboard.html"><i class="fa fa-tachometer-alt"></i> Dashboard</a></li>
+      <li><a href="profile.html"><i class="fa fa-user"></i> Profile</a></li>
+      <li><a href="setting.html"><i class="fa fa-cogs"></i> Settings</a></li>
+      <li><a href="logout.html"><i class="fa fa-sign-out-alt"></i> Logout</a></li>
+    </ul>
+  </div>
+
+  <!-- Main Content -->
+  <div class="main-content">
+    <!-- Navbar -->
+    <div class="navbar">
+      <div class="search-bar">
+        <input type="text" placeholder="Search Exams...">
+      </div>
+      <div class="user-menu">
+        <i class="fa fa-bell"></i>
+        <i class="fa fa-user-circle"></i>
+      </div>
+    </div>
+
+    <!-- Exam Registration Form -->
+    <div class="registration-form">
+      <h3>Register for Exam</h3>
+      <form>
+        <div class="form-group">
+          <label for="exam-select">Select Exam</label>
+          <select id="exam-select" required>
+            <option value="">-- Select an Exam --</option>
+            <option value="math">Math Exam</option>
+            <option value="history">History Exam</option>
+            <option value="physics">Physics Exam</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="exam-date">Select Date</label>
+          <input type="date" id="exam-date" required>
+        </div>
+
+        <div class="form-group">
+          <label for="exam-time">Select Time</label>
+          <input type="time" id="exam-time" required>
+        </div>
+
+        <div class="form-group">
+          <button type="submit">Register for Exam</button>
+        </div>
+      </form>
+    </div>
+
+    <!-- Available Exams List -->
+    <div class="exam-list">
+      <h3>Available Exams</h3>
+      <div class="exam-item">
+        <h4>Math Exam</h4>
+      </div>
+      <div class="exam-item">
+        <h4>History Exam</h4>
+      </div>
+      <div class="exam-item">
+        <h4>Physics Exam</h4>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

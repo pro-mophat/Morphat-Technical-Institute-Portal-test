@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Portal - Analytics</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        /* General Styles */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        /* Dashboard */
+        .dashboard {
+            width: 100%;
+            max-width: 700px;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+
+        /* Stats Section */
+        .stats {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 20px;
+        }
+
+        .stat-box {
+            background: #007bff;
+            color: white;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            width: 45%;
+        }
+
+        .stat-box h3 {
+            margin: 0;
+            font-size: 24px;
+        }
+
+        .stat-box p {
+            margin: 5px 0 0;
+            font-size: 16px;
+        }
+
+        /* Chart Section */
+        .chart-container {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        canvas {
+            width: 100% !important;
+            height: 300px !important;
+        }
+
+        /* Academic Performance Section */
+        .academic-performance {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 20px;
+        }
+
+        .course-performance {
+            background: #28a745;
+            color: white;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            width: 45%;
+        }
+
+        .course-performance h3 {
+            margin: 0;
+            font-size: 24px;
+        }
+
+        .course-performance p {
+            margin: 5px 0 0;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="dashboard">
+        <h2>Student Portal - Analytics</h2>
+
+        <!-- Stats Section -->
+        <div class="stats">
+            <div class="stat-box">
+                <h3 id="totalMessages">0</h3>
+                <p>Total Messages</p>
+            </div>
+            <div class="stat-box">
+                <h3 id="totalAssignments">0</h3>
+                <p>Assignments Submitted</p>
+            </div>
+        </div>
+
+        <!-- Chart Section -->
+        <div class="chart-container">
+            <canvas id="activityChart"></canvas>
+        </div>
+
+        <!-- Academic Performance Section -->
+        <div class="academic-performance">
+            <div class="course-performance">
+                <h3>Math</h3>
+                <p>Grade: A</p>
+                <p>Performance: 95%</p>
+            </div>
+            <div class="course-performance">
+                <h3>English</h3>
+                <p>Grade: B+</p>
+                <p>Performance: 88%</p>
+            </div>
+        </div>
+
+        <!-- Academic Performance Trend -->
+        <div class="chart-container">
+            <canvas id="performanceTrendChart"></canvas>
+        </div>
+    </div>
+
+    <script>
+        // Example data (replace with dynamic data if needed)
+        let totalMessages = 45;
+        let totalAssignments = 12;
+        let weeklyActivity = [5, 8, 12, 6, 10, 4, 9]; // Example activity per day
+        let performanceTrend = [80, 85, 90, 88, 92]; // Example academic performance trend over time
+
+        // Update stats
+        document.getElementById("totalMessages").innerText = totalMessages;
+        document.getElementById("totalAssignments").innerText = totalAssignments;
+
+        // Chart.js for activity visualization
+        let ctx = document.getElementById('activityChart').getContext('2d');
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
+                datasets: [{
+                    label: 'Activity (Messages & Assignments)',
+                    data: weeklyActivity,
+                    backgroundColor: 'rgba(0, 123, 255, 0.7)'
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+
+        // Chart.js for academic performance trend visualization
+        let performanceCtx = document.getElementById('performanceTrendChart').getContext('2d');
+        new Chart(performanceCtx, {
+            type: 'line',
+            data: {
+                labels: ["Semester 1", "Semester 2", "Semester 3", "Semester 4", "Semester 5"],
+                datasets: [{
+                    label: 'Academic Performance (%)',
+                    data: performanceTrend,
+                    borderColor: 'rgba(40, 167, 69, 1)',
+                    backgroundColor: 'rgba(40, 167, 69, 0.2)',
+                    fill: true
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    </script>
+
+</body>
+</html>

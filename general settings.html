@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Portal - General Settings</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            height: 100vh;
+        }
+
+        .dashboard {
+            width: 100%;
+            max-width: 900px;
+            background: #fff;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.1);
+            margin-top: 50px;
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+            font-size: 28px;
+            margin-bottom: 30px;
+        }
+
+        .section-header {
+            font-size: 20px;
+            font-weight: bold;
+            color: #444;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        .form-field {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .form-field:focus {
+            outline: none;
+            border-color: #007bff;
+            box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+        }
+
+        .form-submit {
+            background-color: #007bff;
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+
+        .form-submit:hover {
+            background-color: #0056b3;
+        }
+
+        .form-submit:active {
+            background-color: #003f72;
+        }
+
+        .checkbox-group {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .checkbox-group label {
+            font-size: 16px;
+            color: #555;
+        }
+
+        .settings-option {
+            margin-bottom: 20px;
+        }
+
+        .reset-btn {
+            background-color: #dc3545;
+            color: white;
+            padding: 10px 25px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            text-align: center;
+            width: 100%;
+            transition: background-color 0.3s;
+        }
+
+        .reset-btn:hover {
+            background-color: #c82333;
+        }
+
+        .reset-btn:active {
+            background-color: #a71d2a;
+        }
+
+        .notification-section {
+            margin-top: 20px;
+        }
+
+        .theme-option {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .theme-option label {
+            font-size: 16px;
+        }
+
+        .theme-option input {
+            width: 20px;
+            height: 20px;
+        }
+
+        /* For icons */
+        .icon {
+            margin-right: 10px;
+            color: #007bff;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="dashboard">
+        <h2><i class="fas fa-cogs icon"></i>General Settings</h2>
+
+        <!-- Change Password Section -->
+        <div class="settings-option">
+            <div class="section-header"><i class="fas fa-lock icon"></i>Change Password</div>
+            <input type="password" class="form-field" id="old-password" placeholder="Enter your old password" required>
+            <input type="password" class="form-field" id="new-password" placeholder="Enter your new password" required>
+            <input type="password" class="form-field" id="confirm-password" placeholder="Confirm your new password" required>
+        </div>
+
+        <!-- Notification Preferences Section -->
+        <div class="settings-option notification-section">
+            <div class="section-header"><i class="fas fa-bell icon"></i>Notification Preferences</div>
+            <div class="checkbox-group">
+                <label><input type="checkbox" id="email-notifications"> Email Notifications</label>
+                <label><input type="checkbox" id="sms-notifications"> SMS Notifications</label>
+                <label><input type="checkbox" id="push-notifications"> Push Notifications</label>
+            </div>
+        </div>
+
+        <!-- Privacy Settings -->
+        <div class="settings-option">
+            <div class="section-header"><i class="fas fa-user-shield icon"></i>Privacy Settings</div>
+            <div class="checkbox-group">
+                <label><input type="checkbox" id="profile-public"> Make Profile Public</label>
+                <label><input type="checkbox" id="email-visible"> Make Email Visible</label>
+            </div>
+        </div>
+
+        <!-- Language Preferences Section -->
+        <div class="settings-option">
+            <div class="section-header"><i class="fas fa-language icon"></i>Language Preferences</div>
+            <select class="form-field" id="language">
+                <option value="en">English</option>
+                <option value="es">Spanish</option>
+                <option value="fr">French</option>
+            </select>
+        </div>
+
+        <!-- Account Security -->
+        <div class="settings-option">
+            <div class="section-header"><i class="fas fa-shield-alt icon"></i>Account Security</div>
+            <label><input type="checkbox" id="two-factor"> Enable Two-Factor Authentication (2FA)</label>
+        </div>
+
+        <!-- Theme Settings -->
+        <div class="settings-option">
+            <div class="section-header"><i class="fas fa-paint-brush icon"></i>Appearance Settings</div>
+            <div class="theme-option">
+                <label for="light-mode">Light Mode</label>
+                <input type="radio" name="theme" value="light" checked id="light-mode">
+                <label for="dark-mode">Dark Mode</label>
+                <input type="radio" name="theme" value="dark" id="dark-mode">
+            </div>
+        </div>
+
+        <!-- Reset Settings Button -->
+        <button type="button" class="reset-btn" onclick="resetSettings()">Reset to Default</button>
+
+        <!-- Save Settings Button -->
+        <button type="button" class="form-submit" onclick="saveSettings()">Save Settings</button>
+    </div>
+
+    <script>
+        // Function to save settings
+        function saveSettings() {
+            const oldPassword = document.getElementById('old-password').value;
+            const newPassword = document.getElementById('new-password').value;
+            const confirmPassword = document.getElementById('confirm-password').value;
+            const emailNotifications = document.getElementById('email-notifications').checked;
+            const smsNotifications = document.getElementById('sms-notifications').checked;
+            const pushNotifications = document.getElementById('push-notifications').checked;
+            const profilePublic = document.getElementById('profile-public').checked;
+            const emailVisible = document.getElementById('email-visible').checked;
+            const language = document.getElementById('language').value;
+            const twoFactor = document.getElementById('two-factor').checked;
+            const theme = document.querySelector('input[name="theme"]:checked').value;
+
+            // Simple validation (optional)
+            if (newPassword !== confirmPassword) {
+                alert('New password and confirmation do not match.');
+                return;
+            }
+
+            // Collect all settings data
+            const settingsData = {
+                oldPassword,
+                newPassword,
+                emailNotifications,
+                smsNotifications,
+                pushNotifications,
+                profilePublic,
+                emailVisible,
+                language,
+                twoFactor,
+                theme,
+            };
+
+            // Process settings update (send to API or backend for saving)
+            console.log('Settings saved:', settingsData);
+
+            // Optionally reset form or show a success message
+            document.getElementById('settingsForm').reset();
+            alert('Settings successfully saved!');
+        }
+
+        // Reset settings function
+        function resetSettings() {
+            if (confirm('Are you sure you want to reset settings to default?')) {
+                document.getElementById('settingsForm').reset();
+                alert('Settings reset to default.');
+            }
+        }
+    </script>
+</body>
+</html>

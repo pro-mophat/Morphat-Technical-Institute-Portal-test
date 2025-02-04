@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Event Details - Annual Science Fair</title>
+  <!-- Google Fonts & Font Awesome -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <style>
+    /* Reset & Base Styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #f0f2f5;
+      color: #333;
+      line-height: 1.6;
+      padding: 20px;
+    }
+    .container {
+      max-width: 1200px;
+      margin: 20px auto;
+      background: #fff;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+    /* Event Header */
+    .event-header {
+      text-align: center;
+      margin-bottom: 30px;
+      border-bottom: 1px solid #ddd;
+      padding-bottom: 20px;
+    }
+    .event-header h1 {
+      font-size: 32px;
+      margin-bottom: 10px;
+    }
+    .event-header .details {
+      font-size: 16px;
+      color: #777;
+      margin-bottom: 15px;
+    }
+    .event-header .details span {
+      margin: 0 10px;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+    }
+    /* Event Description */
+    .event-description {
+      margin-bottom: 30px;
+    }
+    .event-description h2 {
+      font-size: 24px;
+      margin-bottom: 10px;
+      color: #4CAF50;
+    }
+    .event-description p {
+      font-size: 16px;
+      margin-bottom: 15px;
+    }
+    /* Event Schedule */
+    .event-schedule {
+      margin-bottom: 30px;
+    }
+    .event-schedule h2 {
+      font-size: 24px;
+      margin-bottom: 15px;
+      color: #4CAF50;
+    }
+    .schedule-item {
+      padding: 10px 0;
+      border-bottom: 1px solid #eee;
+      font-size: 15px;
+    }
+    .schedule-item:last-child {
+      border-bottom: none;
+    }
+    /* Registration Section */
+    .registration {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .registration button {
+      background: #4CAF50;
+      color: #fff;
+      border: none;
+      padding: 12px 25px;
+      font-size: 16px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .registration button:hover {
+      background: #388E3C;
+    }
+    /* Back Link */
+    .back-link {
+      text-align: center;
+      margin-top: 20px;
+    }
+    .back-link a {
+      text-decoration: none;
+      font-size: 16px;
+      color: #4CAF50;
+      transition: color 0.3s;
+    }
+    .back-link a:hover {
+      color: #388E3C;
+    }
+    /* Responsive Adjustments */
+    @media (max-width: 600px) {
+      .container {
+        padding: 20px;
+      }
+      .event-header h1 {
+        font-size: 28px;
+      }
+      .event-description h2,
+      .event-schedule h2 {
+        font-size: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Event Header -->
+    <div class="event-header">
+      <h1>Art&culture Festival</h1>
+      <div class="details">
+        <span><i class="fa fa-calendar"></i> May 15, 2025</span>
+        <span><i class="fa fa-map-marker-alt"></i> Auditorium</span>
+      </div>
+      <p>Join us for a day filled with innovative science projects, interactive exhibits, and inspirational talks by our students and guest experts.</p>
+    </div>
+    
+    <!-- Event Description -->
+    <div class="event-description">
+      <h2>About the Event</h2>
+      <p>
+        The Annual Science Fair is an exciting showcase of our students' ingenuity and passion for discovery. This event encourages creativity, teamwork, and problem-solving as students present their experiments, models, and research projects. Visitors will have the opportunity to engage with interactive exhibits, participate in workshops, and learn about the latest scientific advancements.
+      </p>
+      <p>
+        Whether you're a student, parent, or science enthusiast, the fair offers something for everyone. Explore diverse projects, gain insights from experts, and be inspired by the next generation of innovators.
+      </p>
+    </div>
+    
+    <!-- Event Schedule -->
+    <div class="event-schedule">
+      <h2>Event Schedule</h2>
+      <div class="schedule-item">
+        <strong>9:00 AM - 10:00 AM:</strong> Opening Ceremony & Welcome Speech
+      </div>
+      <div class="schedule-item">
+        <strong>10:00 AM - 12:00 PM:</strong> Student Exhibitions & Presentations
+      </div>
+      <div class="schedule-item">
+        <strong>12:00 PM - 1:00 PM:</strong> Lunch Break
+      </div>
+      <div class="schedule-item">
+        <strong>1:00 PM - 3:00 PM:</strong> Interactive Workshops & Demonstrations
+      </div>
+      <div class="schedule-item">
+        <strong>3:00 PM - 4:00 PM:</strong> Award Ceremony & Closing Remarks
+      </div>
+    </div>
+    
+    <!-- Registration Button -->
+    <div class="registration">
+      <button onclick="window.location.href='register-event.html?event=1'">Register for this Event</button>
+    </div>
+    
+    <!-- Back Link -->
+    <div class="back-link">
+      <a href="event.html">&larr; Back to Events</a>
+    </div>
+  </div>
+</body>
+</html>
+

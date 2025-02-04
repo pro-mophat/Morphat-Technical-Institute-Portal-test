@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exam Card - Portal Institution</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    /* General Styles */
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #f0f2f5;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      min-height: 100vh;
+    }
+
+    /* Sidebar */
+    .sidebar {
+      width: 260px;
+      background-color: #222;
+      color: white;
+      padding-top: 20px;
+      position: fixed;
+      height: 100%;
+      box-shadow: 4px 0 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .sidebar-header {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .sidebar-header h2 {
+      font-size: 22px;
+      margin: 0;
+    }
+
+    .sidebar-nav {
+      list-style: none;
+      padding-left: 0;
+      margin: 0;
+    }
+
+    .sidebar-nav li a {
+      display: flex;
+      align-items: center;
+      padding: 15px 20px;
+      color: white;
+      text-decoration: none;
+      font-size: 18px;
+      border-radius: 5px;
+      transition: 0.3s;
+    }
+
+    .sidebar-nav li a:hover,
+    .sidebar-nav li a.active {
+      background-color: #4CAF50;
+    }
+
+    .sidebar-nav li a i {
+      margin-right: 15px;
+    }
+
+    /* Main Content */
+    .main-content {
+      margin-left: 260px;
+      padding: 20px;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    /* Navbar */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: white;
+      padding: 15px 20px;
+      border-radius: 10px;
+      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+      margin-bottom: 20px;
+    }
+
+    .search-bar input {
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      width: 250px;
+    }
+
+    .user-menu {
+      display: flex;
+      align-items: center;
+    }
+
+    .user-menu i {
+      font-size: 22px;
+      cursor: pointer;
+      margin-right: 20px;
+      transition: 0.3s;
+    }
+
+    .user-menu i:hover {
+      color: #4CAF50;
+    }
+
+    /* Exam Card */
+    .exam-card {
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+      width: 100%;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .exam-card h3 {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    /* Table Styles */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+
+    table, th, td {
+      border: 1px solid #ccc;
+    }
+
+    th, td {
+      padding: 12px;
+      text-align: center;
+    }
+
+    th {
+      background-color: #4CAF50;
+      color: white;
+    }
+
+    .checkbox-container {
+      text-align: left;
+      padding-left: 20px;
+    }
+
+    .checkbox-container input {
+      margin-right: 10px;
+    }
+
+    /* Signatures and Stamps Section */
+    .signatures {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 30px;
+    }
+
+    .signature-section {
+      text-align: center;
+      width: 30%;
+    }
+
+    .signature-section p {
+      margin-top: 10px;
+    }
+
+    .signature-section span {
+      font-weight: bold;
+    }
+
+    .signature-section .signature-line {
+      border-bottom: 1px linen #000;
+      margin-top: 8px;
+      width: 80%;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .stamp-section {
+      text-align: center;
+      width: 30%;
+    }
+
+    .exam-details {
+      margin-top: 20px;
+      text-align: left;
+    }
+
+    /* Print Button */
+    .print-btn {
+      display: block;
+      margin-top:100px;
+      padding: 12px 20px;
+      background-color: #4CAF50;
+      color: white;
+      font-size: 16px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      text-align: center;
+      width: 100%;
+    }
+
+    .print-btn:hover {
+      background-color: #388E3C;
+    }
+  </style>
+  <script>
+    function printExamCard() {
+      window.print();
+    }
+  </script>
+</head>
+<body>
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <div class="sidebar-header">
+      <h3>Morphat Technical Institution</h3>
+    </div>
+    <ul class="sidebar-nav">
+      <li><a href="dashboard.html"><i class="fa fa-tachometer-alt"></i> Dashboard</a></li>
+      <li><a href="profile.html"><i class="fa fa-user"></i> Profile</a></li>
+      <li><a href="setting.html"><i class="fa fa-cogs"></i> Settings</a></li>
+      <li><a href="logout.html"><i class="fa fa-sign-out-alt"></i> Logout</a></li>
+    </ul>
+  </div>
+
+  <!-- Main Content -->
+  <div class="main-content">
+    <!-- Navbar -->
+    <div class="navbar">
+      <div class="search-bar">
+        <input type="text" placeholder="Search Exams...">
+      </div>
+      <div class="user-menu">
+        <i class="fa fa-bell"></i>
+        <i class="fa fa-user-circle"></i>
+      </div>
+    </div>
+
+    <!-- Exam Card -->
+    <div class="exam-card">
+      <h3>Exam Card - [Student Name]</h3>
+
+      <!-- Exam Details -->
+      <div class="exam-details">
+        <p><strong>Course:</strong> Computer Science</p>
+        <p><strong>Exam Duration:</strong> 3 Hours</p>
+        <p><strong>Exam Date:</strong> 12th March, 2025</p>
+      </div>
+
+      <!-- Table for Unit Details -->
+      <table>
+        <thead>
+          <tr>
+            <th>Unit Name</th>
+            <th>Unit Code</th>
+            <th>Teacher In Charge</th>
+            <th>Exam Type</th>
+            <th>Teacher's Signature</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Mathematics</td>
+            <td>CS101</td>
+            <td>Mr. John Doe</td>
+            <td>
+              <div class="checkbox-container">
+                <input type="checkbox" id="sitting-exam" /> Sitting Exam
+                <br>
+                <input type="checkbox" id="takeaway-exam" /> Take Away Exam
+              </div>
+            </td>
+            <td><div class="signature-line"></div></td>
+          </tr>
+          <!-- Additional rows can be added as needed -->
+        </tbody>
+      </table>
+
+      <!-- Signatures and Stamps Section -->
+      <div class="signatures">
+        <div class="signature-section">
+          <p><span>Exam Department:</span></p>
+          <div class="signature-line"></div>
+        </div>
+
+        <div class="signature-section">
+          <p><span>Course Department:</span></p>
+          <div class="signature-line"></div>
+        </div>
+
+        <div class="stamp-section">
+          <p><span>Official Stamp:</span></p>
+          <div class="stamp-box"></div>
+        </div>
+      </div>
+
+      <!-- Print Button -->
+      <button class="print-btn" onclick="printExamCard()">Print Exam Card</button>
+    </div>
+  </div>
+</body>
+</html>

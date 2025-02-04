@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Portal - Finances</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        /* General Styles */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        /* Dashboard */
+        .dashboard {
+            width: 100%;
+            max-width: 700px;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+
+        /* Stats Section */
+        .stats {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 20px;
+        }
+
+        .stat-box {
+            background: #007bff;
+            color: white;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            width: 45%;
+        }
+
+        .stat-box h3 {
+            margin: 0;
+            font-size: 24px;
+        }
+
+        .stat-box p {
+            margin: 5px 0 0;
+            font-size: 16px;
+        }
+
+        /* Chart Section */
+        .chart-container {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        canvas {
+            width: 100% !important;
+            height: 300px !important;
+        }
+
+        /* Finances Section */
+        .finances {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 20px;
+        }
+
+        .finance-box {
+            background: #28a745;
+            color: white;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            width: 45%;
+        }
+
+        .finance-box h3 {
+            margin: 0;
+            font-size: 24px;
+        }
+
+        .finance-box p {
+            margin: 5px 0 0;
+            font-size: 16px;
+        }
+
+        /* Fee Allocation Chart Section */
+        .allocation-chart-container {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="dashboard">
+        <h2>Student Portal - Finances</h2>
+
+        <!-- Finances Section -->
+        <div class="finances">
+            <div class="finance-box">
+                <h3 id="feePaid">$0</h3>
+                <p>Total Fee Paid</p>
+            </div>
+            <div class="finance-box">
+                <h3 id="feeBalance">$0</h3>
+                <p>Fee Balance</p>
+            </div>
+        </div>
+
+        <!-- Fee Allocation Chart Section -->
+        <div class="allocation-chart-container">
+            <div class="chart-container">
+                <canvas id="feeAllocationChart"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Example data (replace with dynamic data if needed)
+        let feePaid = 1200;
+        let feeBalance = 800;
+        let feeAllocation = {
+            Tuition: 60,
+            Library: 15,
+            Sports: 10,
+            Hostel: 15
+        };
+
+        // Update finance stats
+        document.getElementById("feePaid").innerText = "$" + feePaid;
+        document.getElementById("feeBalance").innerText = "$" + feeBalance;
+
+        // Fee Allocation Chart
+        let ctx = document.getElementById('feeAllocationChart').getContext('2d');
+        new Chart(ctx, {
+            type: 'pie',
+            data: {
+                labels: Object.keys(feeAllocation),
+                datasets: [{
+                    label: 'Fee Allocation',
+                    data: Object.values(feeAllocation),
+                    backgroundColor: ['#007bff', '#28a745', '#ffc107', '#dc3545']
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(tooltipItem) {
+                                let label = tooltipItem.label || '';
+                                let value = tooltipItem.raw;
+                                return label + ': ' + value + '%';
+                            }
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+
+</body>
+</html>

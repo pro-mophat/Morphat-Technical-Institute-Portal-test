@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Portal - General Report</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f7fb;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            height: 100vh;
+        }
+
+        .dashboard {
+            width: 100%;
+            max-width: 900px;
+            background: #fff;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+            font-size: 28px;
+            margin-bottom: 30px;
+        }
+
+        .student-details {
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+        }
+
+        .student-details h3 {
+            margin: 0;
+            font-size: 22px;
+        }
+
+        .student-details p {
+            font-size: 16px;
+            margin: 5px 0;
+        }
+
+        .section-header {
+            font-size: 20px;
+            font-weight: bold;
+            color: #444;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        .stats-box {
+            background-color: #007bff;
+            color: white;
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+            width: 30%;
+            display: inline-block;
+            margin: 10px 10px 20px 0;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .stats-box h3 {
+            font-size: 24px;
+            margin: 0;
+        }
+
+        .stats-box p {
+            margin: 5px 0 0;
+            font-size: 16px;
+        }
+
+        .chart-container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+        }
+
+        canvas {
+            width: 100% !important;
+            height: 300px !important;
+        }
+
+        .print-btn {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background-color: #28a745;
+            color: white;
+            text-align: center;
+            border-radius: 8px;
+            font-size: 18px;
+            margin-top: 30px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .print-btn:hover {
+            background-color: #218838;
+        }
+
+        .print-btn:active {
+            background-color: #1e7e34;
+        }
+
+        .financial-summary {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="dashboard">
+        <h2><i class="fas fa-chart-line"></i> General Report</h2>
+
+        <!-- Student Details Section -->
+        <div class="student-details">
+            <h3 id="studentName">John Doe</h3>
+            <p><strong>Course:</strong> Bachelor of Science in Computer Science</p>
+            <p><strong>Duration:</strong> 4 Years</p>
+            <p><strong>Total Attendance:</strong> 95% (190/200 classes)</p>
+            <p><strong>Units Registered:</strong> 6</p>
+            <p><strong>Coverage of Units:</strong> 90% (5/6 units completed)</p>
+        </div>
+
+        <!-- Academic Performance -->
+        <div class="section-header">Academic Performance</div>
+        <div class="stats-box">
+            <h3 id="totalMarks">80%</h3>
+            <p>Overall Grade</p>
+        </div>
+        <div class="stats-box">
+            <h3 id="creditsEarned">45</h3>
+            <p>Credits Earned</p>
+        </div>
+        <div class="stats-box">
+            <h3 id="gradePoint">3.8</h3>
+            <p>GPA</p>
+        </div>
+
+        <!-- Financial Summary -->
+        <div class="section-header">Financial Report</div>
+        <div class="financial-summary">
+            <div class="stats-box">
+                <h3 id="amountPaid">KES 45,000</h3>
+                <p>Amount Paid</p>
+            </div>
+            <div class="stats-box">
+                <h3 id="balanceDue">KES 5,000</h3>
+                <p>Balance Due</p>
+            </div>
+        </div>
+
+        <!-- Attendance Summary -->
+        <div class="section-header">Attendance Summary</div>
+        <div class="stats-box">
+            <h3 id="attendanceRate">95%</h3>
+            <p>Attendance Rate</p>
+        </div>
+
+        <!-- Academic Performance Chart -->
+        <div class="chart-container">
+            <canvas id="performanceChart"></canvas>
+        </div>
+
+        <!-- Print Report Button -->
+        <button class="print-btn" onclick="printReport()">Print Report</button>
+    </div>
+
+    <script>
+        // Example data for Academic Performance (Replace with dynamic data)
+        const academicPerformance = [85, 90, 78, 88, 92, 75, 80]; // Example weekly performance scores
+
+        // Update Stats (Replace with dynamic data if needed)
+        document.getElementById("studentName").innerText = "John Doe";
+        document.getElementById("totalMarks").innerText = "80%";
+        document.getElementById("creditsEarned").innerText = "45";
+        document.getElementById("gradePoint").innerText = "3.8";
+        document.getElementById("amountPaid").innerText = "KES 45,000";
+        document.getElementById("balanceDue").innerText = "KES 5,000";
+        document.getElementById("attendanceRate").innerText = "95%";
+
+        // Chart.js for Academic Performance Visualization
+        let ctx = document.getElementById('performanceChart').getContext('2d');
+        new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
+                datasets: [{
+                    label: 'Weekly Academic Performance',
+                    data: academicPerformance,
+                    borderColor: 'rgba(0, 123, 255, 1)',
+                    backgroundColor: 'rgba(0, 123, 255, 0.2)',
+                    fill: true,
+                    lineTension: 0.4,
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        max: 100
+                    }
+                }
+            }
+        });
+
+        // Print Report Function
+        function printReport() {
+            window.print();  // This opens the print dialog box
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Online Semester Reporting</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #f0f2f5;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .container {
+      width: 100%;
+      max-width: 900px;
+      background-color: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    }
+    .container h3 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .form-group {
+      margin-bottom: 15px;
+    }
+    .form-group label {
+      display: block;
+      font-weight: bold;
+    }
+    .form-group input, .form-group select, .form-group textarea {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 16px;
+    }
+    .form-group textarea {
+      min-height: 100px;
+    }
+    .submit-btn {
+      background-color: #4CAF50;
+      color: white;
+      padding: 12px 20px;
+      font-size: 16px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      width: 100%;
+    }
+    .submit-btn:hover {
+      background-color: #388E3C;
+    }
+    .clearance-form {
+      margin-top: 20px;
+      padding: 18px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      background-color: white;
+    }
+    .clearance-form h4 {
+      text-align: center;
+      margin-bottom: 10px;
+    }
+    .clearance-form table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    .clearance-form th, .clearance-form td {
+      padding: 12px;
+      border: 1px solid #ccc;
+      text-align: center;
+    }
+    .clearance-form th {
+      background-color: #4CAF50;
+      color: white;
+    }
+    .clearance-form .sign-section {
+      text-align: center;
+      margin-top: 20px;
+    }
+    .clearance-form .sign-section input {
+      width: 60%;
+    }
+    .defer-reason {
+      margin-top: 20px;
+      display: none;
+    }
+    .defer-reason textarea {
+      width: 100%;
+      height: 100px;
+    }
+
+    /* Hide everything except the clearance form when printing */
+    @media print {
+      body * {
+        visibility: hidden;
+      }
+      .clearance-form, .clearance-form * {
+        visibility: visible;
+      }
+      .clearance-form {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h3>Online Semester Reporting</h3>
+    <form action="#" method="POST">
+      <!-- Student Information -->
+      <div class="form-group">
+        <label for="student-name">Student Name</label>
+        <input type="text" id="student-name" name="student-name" required>
+      </div>
+      <div class="form-group">
+        <label for="student-id">Student ID</label>
+        <input type="text" id="student-id" name="student-id" required>
+      </div>
+
+      <!-- Attendance Status -->
+      <div class="form-group">
+        <label for="attendance-status">Attendance Status</label>
+        <select id="attendance-status" name="attendance-status" required onchange="toggleDeferReason()">
+          <option value="attending">Attending</option>
+          <option value="defer">Defer Semester</option>
+        </select>
+      </div>
+
+      <!-- Defer Reason (only if defer is selected) -->
+      <div class="defer-reason" id="defer-reason">
+        <h4>Reason for Deferring</h4>
+        <textarea name="defer-reason" placeholder="Enter reason for deferring..."></textarea>
+      </div>
+
+      <!-- Submit Button for Semester Report -->
+      <button type="submit" class="submit-btn">Submit Report</button>
+    </form>
+
+    <!-- Clearance Form (Printable) -->
+    <div class="clearance-form" id="clearance-form">
+      <h4>Clearance Form</h4>
+      <table>
+        <thead>
+          <tr>
+            <th>Department</th>
+            <th>Date</th>
+            <th>Signature</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Finance</td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>Library</td>
+            <td></td>
+            <td></td>
+          </tr>
+           
+          <!-- Add more rows for other departments if necessary -->
+        </tbody>
+      </table>
+      <div class="sign-section">
+        <p>Signed by Exam Department:</p>
+       
+        <p>Signed by Course Department:</p>
+        
+      </div>
+    </div>
+
+    <!-- Print Button (only for Clearance Form) -->
+    <button class="submit-btn" onclick="printClearance()">Print Clearance Form</button>
+  </div>
+
+  <script>
+    // Function to show/hide defer reason based on selection
+    function toggleDeferReason() {
+      const attendanceStatus = document.getElementById('attendance-status').value;
+      const deferReason = document.getElementById('defer-reason');
+      if (attendanceStatus === 'defer') {
+        deferReason.style.display = 'block';
+      } else {
+        deferReason.style.display = 'none';
+      }
+    }
+
+    // Function to print only the clearance form
+    function printClearance() {
+      window.print();
+    }
+  </script>
+
+</body>
+</html>

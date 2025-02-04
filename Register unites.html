@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Portal - Register Units</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        /* Dashboard */
+        .dashboard {
+            width: 100%;
+            max-width: 900px;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+
+        /* Unit Registration Form */
+        .unit-form {
+            display: flex;
+            flex-direction: column;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .form-field {
+            padding: 12px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .form-submit {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .form-submit:hover {
+            background-color: #0056b3;
+        }
+
+        .select-dropdown {
+            padding: 12px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="dashboard">
+        <h2>Register Academic Units</h2>
+
+        <!-- Register Units Form -->
+        <div class="unit-form">
+            <label for="unit-code">Unit Code:</label>
+            <input type="text" class="form-field" id="unit-code" placeholder="Enter Unit Code" required>
+
+            <label for="unit-name">Unit Name:</label>
+            <input type="text" class="form-field" id="unit-name" placeholder="Enter Unit Name" required>
+
+            <label for="unit-description">Unit Description:</label>
+            <textarea class="form-field" id="unit-description" rows="4" placeholder="Enter a brief description of the unit" required></textarea>
+
+            <label for="semester">Semester:</label>
+            <select class="select-dropdown" id="semester" required>
+                <option value="">Select Semester</option>
+                <option value="Semester 1">Semester 1</option>
+                <option value="Semester 2">Semester 2</option>
+                <option value="Semester 3">Semester 3</option>
+            </select>
+
+            <label for="credits">Credits:</label>
+            <input type="number" class="form-field" id="credits" placeholder="Enter Number of Credits" required min="1">
+
+            <label for="instructor">Instructor:</label>
+            <input type="text" class="form-field" id="instructor" placeholder="Enter Instructor Name" required>
+
+            <button class="form-submit" onclick="submitUnit()">Register Unit</button>
+        </div>
+    </div>
+
+    <script>
+        function submitUnit() {
+            // Get values from the form
+            const unitCode = document.getElementById('unit-code').value;
+            const unitName = document.getElementById('unit-name').value;
+            const unitDescription = document.getElementById('unit-description').value;
+            const semester = document.getElementById('semester').value;
+            const credits = document.getElementById('credits').value;
+            const instructor = document.getElementById('instructor').value;
+
+            // Simple validation (optional)
+            if (!unitCode || !unitName || !unitDescription || !semester || !credits || !instructor) {
+                alert('Please fill in all the fields.');
+                return;
+            }
+
+            // Process the unit registration (e.g., store it in the database or handle via API)
+            // For now, just log it to the console
+            const unitData = {
+                unitCode,
+                unitName,
+                unitDescription,
+                semester,
+                credits,
+                instructor
+            };
+            console.log('Unit Registered:', unitData);
+
+            // Optionally, clear the form after submission
+            document.querySelector('.unit-form').reset();
+            alert('Unit successfully registered!');
+        }
+    </script>
+
+</body>
+</html>
